@@ -3,16 +3,17 @@
 void GameHandler::check_events() {
 	while (running) {
 		data_lock.lock();
-		if (data.has("previously") &&
-			data.getObject("previously")->has("round") &&
-			data.getObject("previously")->getObject("round")->has("bomb") &&
-			(data.getObject("previously")->getObject("round")->getValue<std::string>("bomb") == "planted")) {
-			if (data.has("round") &&
-				data.getObject("round")->has("bomb") &&
-				(data.getObject("round")->getValue<std::string>("bomb") == "exploded")) {
-				queue_lock.lock();
-				event_queue.push(GameEvent::EventHandlerFactory::create_event_handler(GameEvent::EventType::BOMB_EXPLODED, led_controller));
-				queue_lock.unlock();
+		if (data_has_changed) {
+			if (data.has("previously") &&
+				data.getObject("previously")->has("round") &&
+				data.getObject("previously")->getObject("round")->has("bomb") &&
+				(data.getObject("previously")->getObject("round")->getValue<std::string>("bomb") == "planted")) {
+				if (data.has("round") &&
+					data.getObject("round")->has("bomb") &&
+					(data.getObject("round")->getValue<std::string>("bomb") == "exploded")) {
+					data_has_changed = false;
+					event_queue.push(GameEvent::EventHandlerFactory::create_event_handler(GameEvent::EventType::BOMB_EXPLODED, led_controller));
+				}
 			}
 		}
 		data_lock.unlock();
@@ -21,15 +22,12 @@ void GameHandler::check_events() {
 
 void GameHandler::handle_queue() {
 	while (running) {
-		queue_lock.lock();
 		if (event_queue.empty()) {
 			continue;
 		}
 		auto& ev = event_queue.front();
 		ev->handle_event();
 		event_queue.pop();
-		queue_lock.unlock();
-		Sleep(16);
 	}
 }
 
@@ -37,7 +35,8 @@ GameHandler::GameHandler(std::shared_ptr<HardwareController> hc, std::string gsi
 	led_controller(hc), 
 	gsi_path(gsi_path),
 	port(port),
-	running(false) {
+	running(false),
+	data_has_changed(false) {
 	http_srv = std::make_shared<Poco::Net::HTTPServer>(
 		new GSIRequestHandlerFactory(this),
 		Poco::Net::ServerSocket(port),
@@ -46,6 +45,7 @@ GameHandler::GameHandler(std::shared_ptr<HardwareController> hc, std::string gsi
 
 void GameHandler::update_data(Poco::JSON::Object::Ptr data) {
 	data_lock.lock();
+	data_has_changed = true;
 	this->data = *data;
 	data_lock.unlock();
 }
@@ -65,12 +65,12 @@ void GameHandler::run() {
 	running = true;
 	http_srv->start();
 	event_loop_thread = std::thread(&GameHandler::check_events, this);
+	event_loop_thread.detach();
 	queue_handler_thread = std::thread(&GameHandler::handle_queue, this);
+	queue_handler_thread.detach();
 }
 
 void GameHandler::stop() {
 	running = false;
 	http_srv->stop();
-	event_loop_thread.join();
-	queue_handler_thread.join();
 }

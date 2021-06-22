@@ -18,9 +18,9 @@ private:
 	std::string gsi_path;
 	Poco::UInt16 port;
 	std::mutex data_lock;
-	std::mutex queue_lock;
 	Poco::JSON::Object data;
 	bool running;
+	bool data_has_changed;
 	std::thread event_loop_thread;
 	std::thread queue_handler_thread;
 	void check_events();

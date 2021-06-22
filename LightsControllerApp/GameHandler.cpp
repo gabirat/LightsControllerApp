@@ -13,23 +13,19 @@ GameHandler::GameHandler(std::shared_ptr<HardwareController> hc, std::string gsi
 
 void GameHandler::update_data(Poco::JSON::Object::Ptr data) {
 	data_mutex.lock();
-	previous_data = new_data;
-	new_data = *data;
+	this->data = *data;
 	data_mutex.unlock();
 }
 
-Poco::JSON::Object GameHandler::get_new_data() {
+Poco::JSON::Object GameHandler::get_data() {
 	data_mutex.lock();
-	auto ret = new_data;
+	auto ret = data;
 	data_mutex.unlock();
 	return ret;
 }
 
-Poco::JSON::Object GameHandler::get_previous_data() {
-	data_mutex.lock();
-	auto ret = previous_data;
-	data_mutex.unlock();
-	return ret;
+std::string GameHandler::get_gsi_path() const {
+	return gsi_path;
 }
 
 void GameHandler::run() {

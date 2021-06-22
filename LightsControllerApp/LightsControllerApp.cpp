@@ -10,7 +10,12 @@ void LightsControllerApp::run() {
 	for (auto& gh : game_handlers) {
 		gh->run();
 	}
-	while (true) {
 
+	do {
+		std::cout << '\n' << "Press 'q' key to exit...\n";
+	} while (std::cin.get() != 'q');
+	
+	for (auto& gh : game_handlers) {
+		gh->stop();
 	}
 }

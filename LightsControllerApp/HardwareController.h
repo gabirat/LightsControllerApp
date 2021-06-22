@@ -3,14 +3,16 @@
 #include <string>
 #include <vector>
 #include <chrono>
+#include <iostream>
+#include <stdint.h>
 #include "SerialPort.h"
 
 struct Color {
 public:
-    char r;
-    char g;
-    char b;
-    Color(char r, char g, char b) :
+    uint8_t r;
+    uint8_t g;
+    uint8_t b;
+    Color(uint8_t r, uint8_t g, uint8_t b) :
         r(r), g(g), b(b) {
     };
 };

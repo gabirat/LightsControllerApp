@@ -35,7 +35,7 @@ void HardwareController::play_effect(LEDEffect effect) {
         g = g > 255.0f ? 255.0f : g;
         b = b > 255.0f ? 255.0f : b;
 
-        set_color(Color((char)r, (char)g, (char)b));
+        set_color(Color((uint8_t)r, (uint8_t)g, (uint8_t)b));
         std::chrono::steady_clock::time_point end = std::chrono::steady_clock::now();
         delta_time = std::chrono::duration_cast<std::chrono::milliseconds>(end - start_frame_time).count() / 1000.0f;
         time += delta_time;
@@ -44,7 +44,7 @@ void HardwareController::play_effect(LEDEffect effect) {
 }
 
 void HardwareController::set_color(Color c) {
-    char buff[3] = { c.b, c.g , c.r };
+    char buff[3] = { (char)c.g, (char)c.r , (char)c.b };
     this->writeSerialPort(buff, sizeof(buff));
 }
 

@@ -3,7 +3,7 @@
 #include <string>
 #include "SerialPort.h"
 
-class HardwareController : SerialPort {
+class HardwareController : public SerialPort {
 public:
 	HardwareController(char* port);
 	void play_effect();

@@ -28,6 +28,7 @@ public:
     float durationInSeconds;
     std::vector<Keyframe> keyframes;
     LEDEffect(std::vector<Keyframe> kf);
+    LEDEffect();
 };
 
 class HardwareController : public SerialPort {

@@ -5,6 +5,7 @@ HardwareController::HardwareController(char* port) :
 }
 
 void HardwareController::play_effect(LEDEffect effect) {
+    if (effect.keyframes.size() == 0) return;
     effect_in_progress = true;
     float time = 0.0f;
     int next_frame_idx = 1;
@@ -54,4 +55,8 @@ bool HardwareController::get_effect_in_progress() const {
 
 LEDEffect::LEDEffect(std::vector<Keyframe> kf) : keyframes(kf) {
     durationInSeconds = kf[kf.size() - 1].timestamp;
+}
+
+LEDEffect::LEDEffect() {
+    keyframes.clear();
 }

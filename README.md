@@ -17,6 +17,9 @@ Communicates through SerialPort with homemade led controller (Arduino with custo
 - I plan to rework event checking system to be more easily extendable
 - I need to make some changes to threading. It looks like it's unstable sometimes
 
+## Demo video
+[![LightsControllerApp Demo](https://img.youtube.com/vi/zLkzEQQWokk/0.jpg)](https://www.youtube.com/watch?v=zLkzEQQWokk)
+
 ## Dependencies
 - [POCO C++ Libraries](https://pocoproject.org/)
 - [SerialPort by manashmandal](https://github.com/manashmandal/SerialPort)

@@ -13,15 +13,18 @@
       <UniqueIdentifier>{67DA6AB6-F800-4c08-8B7A-83BB121AAD01}</UniqueIdentifier>
       <Extensions>rc;ico;cur;bmp;dlg;rc2;rct;bin;rgs;gif;jpg;jpeg;jpe;resx;tiff;tif;png;wav;mfcribbon-ms</Extensions>
     </Filter>
+    <Filter Include="Header Files\GameEvent">
+      <UniqueIdentifier>{d7f27fe5-e68e-4551-8392-08590de8876c}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\GameEvent">
+      <UniqueIdentifier>{451910c7-1407-4055-a1e6-a2ed4c51be86}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="main.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="GameHandler.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="EventHandler.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="GSIRequestHandler.cpp">
@@ -42,15 +45,21 @@
     <ClCompile Include="CSGOHandler.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="BombExplodedEventHandler.cpp">
+      <Filter>Source Files\GameEvent</Filter>
+    </ClCompile>
+    <ClCompile Include="EventHandler.cpp">
+      <Filter>Source Files\GameEvent</Filter>
+    </ClCompile>
+    <ClCompile Include="EventHandlerFactory.cpp">
+      <Filter>Source Files\GameEvent</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <Text Include="conanfile.txt" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="GameHandler.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="EventHandler.h">
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="GSIRequestHandler.h">
@@ -70,6 +79,15 @@
     </ClInclude>
     <ClInclude Include="CSGOHandler.h">
       <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="BombExplodedEventHandler.h">
+      <Filter>Header Files\GameEvent</Filter>
+    </ClInclude>
+    <ClInclude Include="EventHandler.h">
+      <Filter>Header Files\GameEvent</Filter>
+    </ClInclude>
+    <ClInclude Include="EventHandlerFactory.h">
+      <Filter>Header Files\GameEvent</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

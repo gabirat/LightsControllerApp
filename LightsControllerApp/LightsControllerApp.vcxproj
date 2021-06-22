@@ -141,8 +141,10 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="BombExplodedEventHandler.cpp" />
     <ClCompile Include="CSGOHandler.cpp" />
     <ClCompile Include="EventHandler.cpp" />
+    <ClCompile Include="EventHandlerFactory.cpp" />
     <ClCompile Include="GameHandler.cpp" />
     <ClCompile Include="GSIRequestHandler.cpp" />
     <ClCompile Include="GSIRequestHandlerFactory.cpp" />
@@ -155,8 +157,10 @@
     <Text Include="conanfile.txt" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="BombExplodedEventHandler.h" />
     <ClInclude Include="CSGOHandler.h" />
     <ClInclude Include="EventHandler.h" />
+    <ClInclude Include="EventHandlerFactory.h" />
     <ClInclude Include="GameHandler.h" />
     <ClInclude Include="GSIRequestHandler.h" />
     <ClInclude Include="GSIRequestHandlerFactory.h" />

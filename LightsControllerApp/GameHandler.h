@@ -17,14 +17,13 @@ private:
 	std::string gsi_path;
 	Poco::UInt16 port;
 	std::mutex data_mutex;
-	Poco::JSON::Object new_data;
-	Poco::JSON::Object previous_data;
+	Poco::JSON::Object data;
 
 public:
 	GameHandler(std::shared_ptr<HardwareController> hc, std::string gsi_path, Poco::UInt16 port);
 	void update_data(Poco::JSON::Object::Ptr data);
-	Poco::JSON::Object get_new_data();
-	Poco::JSON::Object get_previous_data();
+	Poco::JSON::Object get_data();
+	std::string get_gsi_path() const;
 	void run();
 	void stop();
 };

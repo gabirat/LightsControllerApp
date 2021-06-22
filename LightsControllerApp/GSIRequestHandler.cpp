@@ -4,6 +4,8 @@ GSIRequestHandler::GSIRequestHandler(GameHandler* gh) : game_handler(gh) {
 }
 
 void GSIRequestHandler::handleRequest(Poco::Net::HTTPServerRequest& req, Poco::Net::HTTPServerResponse& resp) {
+    if (game_handler->get_gsi_path() != req.getURI()) return;
+
     Poco::JSON::Parser parser;
     auto result = parser.parse(req.stream());
     auto obj = result.extract<Poco::JSON::Object::Ptr>();

@@ -1,4 +1,11 @@
 #pragma once
-class EventHandler {
+
+namespace GameEvent {
+
+	class EventHandler {
+	};
+
 };
+
+
 

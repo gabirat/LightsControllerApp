@@ -1,15 +1,12 @@
 #pragma once
 
-#include "EventHandler.h"
+#include "BombExplodedEventHandler.h"
 
 namespace GameEvent {
 
-	enum class EventType {
-		BOMB_EXPLODED, BOMB_DEFUSED, BOMB_PLANTED
-	};
-
 	class EventHandlerFactory {
-
+	public:
+		static std::shared_ptr<EventHandler> create_event_handler(EventType et, std::shared_ptr<HardwareController> hc);
 	};
 
 };

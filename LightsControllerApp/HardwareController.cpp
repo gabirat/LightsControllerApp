@@ -41,6 +41,7 @@ void HardwareController::play_effect(LEDEffect effect) {
         delta_time = std::chrono::duration_cast<std::chrono::milliseconds>(end - start_frame_time).count() / 1000.0f;
         time += delta_time;
     }
+    set_color(Color(0, 0, 0));
     effect_in_progress = false;
 }
 

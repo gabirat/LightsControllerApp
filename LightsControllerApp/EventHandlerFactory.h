@@ -1,6 +1,9 @@
 #pragma once
 
 #include "BombExplodedEventHandler.h"
+#include "BombDefusedEventHandler.h"
+#include "WinCTEventHandler.h"
+#include "WinTEventHandler.h"
 
 namespace GameEvent {
 

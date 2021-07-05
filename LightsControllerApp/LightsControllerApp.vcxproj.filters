@@ -54,6 +54,15 @@
     <ClCompile Include="EventHandlerFactory.cpp">
       <Filter>Source Files\GameEvent</Filter>
     </ClCompile>
+    <ClCompile Include="BombDefusedEventHandler.cpp">
+      <Filter>Source Files\GameEvent</Filter>
+    </ClCompile>
+    <ClCompile Include="WinCTEventHandler.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="WinTEventHandler.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <Text Include="conanfile.txt" />
@@ -89,5 +98,33 @@
     <ClInclude Include="EventHandlerFactory.h">
       <Filter>Header Files\GameEvent</Filter>
     </ClInclude>
+    <ClInclude Include="BombDefusedEventHandler.h">
+      <Filter>Header Files\GameEvent</Filter>
+    </ClInclude>
+    <ClInclude Include="WinCTEventHandler.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="WinTEventHandler.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="resource.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+  </ItemGroup>
+  <ItemGroup>
+    <ResourceCompile Include="LightsControllerApp.rc">
+      <Filter>Resource Files</Filter>
+    </ResourceCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <Image Include="icon1.ico">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="led-diode.png">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="led-diode.ico">
+      <Filter>Resource Files</Filter>
+    </Image>
   </ItemGroup>
 </Project>

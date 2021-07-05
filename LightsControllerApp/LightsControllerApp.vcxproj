@@ -141,6 +141,7 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="BombDefusedEventHandler.cpp" />
     <ClCompile Include="BombExplodedEventHandler.cpp" />
     <ClCompile Include="CSGOHandler.cpp" />
     <ClCompile Include="EventHandler.cpp" />
@@ -152,11 +153,14 @@
     <ClCompile Include="LightsControllerApp.cpp" />
     <ClCompile Include="main.cpp" />
     <ClCompile Include="SerialPort.cpp" />
+    <ClCompile Include="WinCTEventHandler.cpp" />
+    <ClCompile Include="WinTEventHandler.cpp" />
   </ItemGroup>
   <ItemGroup>
     <Text Include="conanfile.txt" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="BombDefusedEventHandler.h" />
     <ClInclude Include="BombExplodedEventHandler.h" />
     <ClInclude Include="CSGOHandler.h" />
     <ClInclude Include="EventHandler.h" />
@@ -166,7 +170,18 @@
     <ClInclude Include="GSIRequestHandlerFactory.h" />
     <ClInclude Include="HardwareController.h" />
     <ClInclude Include="LightsControllerApp.h" />
+    <ClInclude Include="resource.h" />
     <ClInclude Include="SerialPort.h" />
+    <ClInclude Include="WinCTEventHandler.h" />
+    <ClInclude Include="WinTEventHandler.h" />
+  </ItemGroup>
+  <ItemGroup>
+    <ResourceCompile Include="LightsControllerApp.rc" />
+  </ItemGroup>
+  <ItemGroup>
+    <Image Include="icon1.ico" />
+    <Image Include="led-diode.ico" />
+    <Image Include="led-diode.png" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

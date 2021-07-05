@@ -7,7 +7,8 @@ namespace GameEvent {
 
 	enum class EventType {
 		None = 0,
-		BOMB_EXPLODED, BOMB_DEFUSED, BOMB_PLANTED
+		BOMB_EXPLODED, BOMB_DEFUSED, BOMB_PLANTED,
+		WIN_T, WIN_CT
 	};
 
 	class EventHandler {

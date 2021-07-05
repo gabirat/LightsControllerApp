@@ -4,17 +4,45 @@ void GameHandler::check_events() {
 	while (running) {
 		data_lock.lock();
 		if (data_has_changed) {
+			
 			if (data.has("previously") &&
 				data.getObject("previously")->has("round") &&
 				data.getObject("previously")->getObject("round")->has("bomb") &&
 				(data.getObject("previously")->getObject("round")->getValue<std::string>("bomb") == "planted")) {
+				//BOMB_EXPLODED
 				if (data.has("round") &&
 					data.getObject("round")->has("bomb") &&
 					(data.getObject("round")->getValue<std::string>("bomb") == "exploded")) {
 					data_has_changed = false;
 					event_queue.push(GameEvent::EventHandlerFactory::create_event_handler(GameEvent::EventType::BOMB_EXPLODED, led_controller));
 				}
+				//BOMB_DEFUSED
+				if (data.has("round") &&
+					data.getObject("round")->has("bomb") &&
+					(data.getObject("round")->getValue<std::string>("bomb") == "defused")) {
+					data_has_changed = false;
+					event_queue.push(GameEvent::EventHandlerFactory::create_event_handler(GameEvent::EventType::BOMB_DEFUSED, led_controller));
+				}
 			}
+
+			if (data.has("previously") &&
+				data.getObject("previously")->has("round") &&
+				data.getObject("previously")->getObject("round")->has("phase") &&
+				(data.getObject("previously")->getObject("round")->getValue<std::string>("phase") == "live")) {
+
+				if (data.has("round") &&
+					data.getObject("round")->has("phase") &&
+					(data.getObject("round")->getValue<std::string>("phase") == "over")) {
+					data_has_changed = false;
+					if (data.getObject("round")->getValue<std::string>("win_team") == "T") {
+						event_queue.push(GameEvent::EventHandlerFactory::create_event_handler(GameEvent::EventType::WIN_T, led_controller));
+					}
+					if (data.getObject("round")->getValue<std::string>("win_team") == "CT") {
+						event_queue.push(GameEvent::EventHandlerFactory::create_event_handler(GameEvent::EventType::WIN_CT, led_controller));
+					}
+				}
+			}
+
 		}
 		data_lock.unlock();
 	}
